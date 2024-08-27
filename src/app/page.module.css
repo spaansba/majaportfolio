@@ -169,13 +169,6 @@
   font-size: 1.2rem;
 }
 
-.contact {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  border-radius: 10px;
-}
-
 .contact .button {
   background-color: white;
   color: #333;
@@ -201,6 +194,7 @@
   padding: 4rem 2rem;
   position: relative;
   overflow: hidden;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .contactOverlay {
@@ -254,11 +248,11 @@
 .contactForm button:hover {
   background-color: #f0f0f0;
 }
+
 .about {
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin-top: 4rem;
+  border-radius: 0px 0px 10px 10px;
   position: relative;
   z-index: 3;
   padding: 4rem 2rem;
@@ -339,6 +333,9 @@
 
   .socialIcons {
     justify-content: center;
+  }
+  .roundedDivWrapper {
+    height: calc(70px - (var(--scroll-progress) * 1px));
   }
 }
 

@@ -45,32 +45,56 @@
 }
 
 .roundedDiv {
+  will-change: transform, height;
   position: absolute;
   left: 50%;
   height: 750%;
   width: 150%;
   background-color: #f8f8f8;
-  transform: translate(-50%, -86.6%);
+  transform: translate(-50%);
   border-radius: 50% 50% 0 0;
   z-index: 100;
   background-color: #f8f8f8;
   transition: height 0.1s ease-out;
 }
-
-.roundedDiv.topDiv {
-  transform: translate(-50%);
+.reversedRoundedDivWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(100px * (var(--bottom-div-progress) / 100));
+  overflow: hidden;
+}
+.reversedRoundedDiv {
+  position: absolute;
+  left: 50%;
+  height: 770%;
+  transform: translate(-50%, -86.6%);
+  width: 170%;
+  background-color: #f8f8f8;
+  border-radius: 50%;
+  z-index: 100;
 }
 
 .about,
-.portfolio,
-.contact {
+.portfolio {
   padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .contact {
-  position: absolute;
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 8rem 2rem 4rem;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  overflow: hidden;
 }
 
 .about h2,
@@ -315,5 +339,12 @@
 
   .socialIcons {
     justify-content: center;
+  }
+}
+
+@media (hover: none) {
+  .galleryItem p {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

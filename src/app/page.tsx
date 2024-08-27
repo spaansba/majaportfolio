@@ -120,7 +120,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h3>Hi, I'm Maja</h3>
+            <h3>Hi, Im Maja</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa reprehenderit vero
               aperiam, omnis temporibus ipsum animi assumenda magni, molestiae magnam mollitia vitae
@@ -201,8 +201,8 @@ export default function Home() {
         <div className={styles.contactContent}>
           <h2>Get in Touch</h2>
           <p>
-            Let's work together to capture your special moments. Fill out the form below, and I'll
-            get back to you as soon as possible.
+            Lets work together to capture your special moments. Fill out the form below, and Ill get
+            back to you as soon as possible.
           </p>
           <form className={styles.contactForm}>
             <input type="text" placeholder="Your Name" required />

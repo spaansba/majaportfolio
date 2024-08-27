@@ -4,21 +4,29 @@ import styles from "./page.module.css"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useState } from "react"
 import { useEffect } from "react"
+import { FaInstagram, FaLinkedin } from "react-icons/fa"
 export default function Home() {
-  const [isProfileFixed, setIsProfileFixed] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+
+  const calculateScrollProgress = () => {
+    const scrollPosition = window.scrollY
+    const maxScroll = 500 // how fast the height decreases (higher is slower)
+    return Math.min(100, (scrollPosition / maxScroll) * 100)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
-      const aboutSection = document.getElementById("about")
-      if (aboutSection) {
-        const rect = aboutSection.getBoundingClientRect()
-        setIsProfileFixed(rect.top <= 20)
-      }
+      setScrollProgress(calculateScrollProgress())
     }
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  useEffect(() => {
+    document.documentElement.style.setProperty("--scroll-progress", scrollProgress.toString())
+  }, [scrollProgress])
+
   const portfolioItems = [
     {
       src: "https://utfs.io/f/a25e85e9-92b9-42fc-a7c2-c9dbd865284a-p1zbl.jpg",
@@ -59,8 +67,6 @@ export default function Home() {
           objectFit="cover"
           priority
         />
-
-        <div className={styles.heroArch}></div>
         <motion.div
           className={styles.heroContent}
           initial={{ opacity: 0 }}
@@ -79,30 +85,19 @@ export default function Home() {
             View Portfolio
           </motion.a>
         </motion.div>
+        <div className={styles.roundedDivWrapper} data-scroll-progress={scrollProgress}>
+          <div className={`${styles.roundedDiv} ${styles.topDiv}`}></div>
+        </div>
       </section>
-
       <motion.section
         className={styles.about}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
         <h2>About Me</h2>
         <div className={styles.aboutContent}>
-          <motion.div
-            className={styles.aboutText}
-            initial={{ x: -50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis
-              provident aut dolorum dolore officiis architecto, ad molestiae vitae, temporibus
-              placeat nostrum? Consequatur debitis harum corrupti temporibus commodi tempore quos.
-            </p>
-          </motion.div>
           <motion.div
             className={styles.profilePictureContainer}
             initial={{ scale: 0.8, opacity: 0 }}
@@ -113,10 +108,49 @@ export default function Home() {
             <Image
               src="https://utfs.io/f/1ceee928-c6a8-4215-b20a-ee1708f35914-tfatz2.JPG"
               alt="Maja's profile picture"
-              layout="fill"
-              objectFit="cover"
+              width={300}
+              height={300}
               className={styles.profilePicture}
             />
+          </motion.div>
+          <motion.div
+            className={styles.aboutText}
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h3>Hi, I'm Maja</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa reprehenderit vero
+              aperiam, omnis temporibus ipsum animi assumenda magni, molestiae magnam mollitia vitae
+              perspiciatis asperiores modi laudantium deserunt doloribus vel repudiandae nam libero
+              nostrum dolor sint odit. Fugiat molestiae numquam beatae.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, veritatis? Fuga dolor
+              veritatis architecto asperiores rem, incidunt quibusdam quisquam debitis.
+            </p>
+            <div className={styles.socialIcons}>
+              <motion.a
+                href="https://www.instagram.com/your_instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <FaInstagram />
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/in/your_linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <FaLinkedin />
+              </motion.a>
+            </div>
           </motion.div>
         </div>
       </motion.section>

@@ -2,26 +2,17 @@
   font-family: "Roboto", sans-serif;
   color: #333;
   background-color: #f8f8f8;
+  user-select: none;
 }
 
 .hero {
   position: relative;
-  height: 110vh;
+  height: 115vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Add this line */
-}
-
-.heroArch {
-  position: absolute;
-  bottom: -95%;
-  left: -10%;
-  right: -10%;
-  height: 100%;
-  background-color: #f8f8f8; /* Match this with your main background color */
-  border-radius: 50% 50% 0 0 / 10% 10% 0 0;
-  z-index: 1;
+  user-select: none;
+  overflow: hidden;
 }
 
 .heroContent {
@@ -30,6 +21,7 @@
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   z-index: 2;
+  margin-top: -15vh;
 }
 
 .heroContent h1 {
@@ -43,6 +35,32 @@
   margin-bottom: 2rem;
 }
 
+.roundedDivWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(100px - (var(--scroll-progress) * 1px));
+  overflow: hidden;
+}
+
+.roundedDiv {
+  position: absolute;
+  left: 50%;
+  height: 750%;
+  width: 150%;
+  background-color: #f8f8f8;
+  transform: translate(-50%, -86.6%);
+  border-radius: 50% 50% 0 0;
+  z-index: 100;
+  background-color: #f8f8f8;
+  transition: height 0.1s ease-out;
+}
+
+.roundedDiv.topDiv {
+  transform: translate(-50%);
+}
+
 .about,
 .portfolio,
 .contact {
@@ -51,13 +69,8 @@
   margin: 0 auto;
 }
 
-.about {
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin-top: -3rem;
-  position: relative;
-  z-index: 3;
+.contact {
+  position: absolute;
 }
 
 .about h2,
@@ -156,50 +169,6 @@
   object-fit: cover;
 }
 
-.aboutContent {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-}
-
-.aboutText {
-  flex: 1;
-}
-
-.profilePictureContainer {
-  flex: 0 0 300px;
-  position: relative;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.profilePictureContainer {
-  flex: 0 0 400px;
-  position: relative;
-  height: 500px;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.skillsList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.skillItem {
-  background-color: #f0f0f0;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
 .contact {
   background-color: #333;
   color: white;
@@ -260,4 +229,91 @@
 
 .contactForm button:hover {
   background-color: #f0f0f0;
+}
+.about {
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 4rem;
+  position: relative;
+  z-index: 3;
+  padding: 4rem 2rem;
+}
+
+.aboutContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.profilePictureContainer {
+  flex: 0 0 300px;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profilePicture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aboutText {
+  flex: 1;
+}
+
+.aboutText h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.aboutText p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.socialIcons a {
+  font-size: 1.5rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.socialIcons a:hover {
+  color: #0077b5;
+}
+
+@media (max-width: 768px) {
+  .aboutContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profilePictureContainer {
+    margin-bottom: 2rem;
+  }
+
+  .aboutText {
+    width: 100%;
+  }
+
+  .socialIcons {
+    justify-content: center;
+  }
 }

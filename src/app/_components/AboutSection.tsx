@@ -13,7 +13,7 @@ function AboutSection() {
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
-      <h2>About Me</h2>
+      <h2>ABOUT ME</h2>
       <div className={styles.aboutContent}>
         <motion.div
           className={styles.profilePictureContainer}

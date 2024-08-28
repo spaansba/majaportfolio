@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import styles from "./LandingPage.module.css"
+import styles from "./../LandingPage.module.css"
 
 function RoundedDivWrapper() {
   const [scrollProgress, setScrollProgress] = useState(0)

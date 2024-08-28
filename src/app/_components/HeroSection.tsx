@@ -2,7 +2,8 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import React from "react"
 import styles from "./LandingPage.module.css"
-import RoundedDivWrapper from "./RoundedDivWrapper"
+import RoundedDivWrapper from "./UI/RoundedDivWrapper"
+import WaveAnimation from "./UI/WaveAnimation"
 
 interface HeroSectionProps {
   children: React.ReactNode // Server side image so it instantly loads
@@ -21,16 +22,17 @@ function HeroSection({ children }: HeroSectionProps) {
         transition={{ duration: 1 }}
         style={{ y }}
       >
-        <motion.h1>Majas Photography</motion.h1>
-        <motion.p>Capturing moments, creating memories</motion.p>
-        <motion.a
+        <motion.h1>MAJA LINDQVIST</motion.h1>
+        <motion.h2>PHOTOGRAPHY</motion.h2>
+        {/* <motion.a
           href="#portfolio"
           className={styles.button}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           View Portfolio
-        </motion.a>
+        </motion.a> */}
+        <WaveAnimation />
       </motion.div>
       <RoundedDivWrapper />
     </section>

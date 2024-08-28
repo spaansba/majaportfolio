@@ -33,7 +33,7 @@ function PortfolioSection() {
   ]
   return (
     <section id="portfolio" className={styles.portfolio}>
-      <h2>Portfolio</h2>
+      <h2>PORTFOLIO</h2>
       <div className={styles.galleryGrid}>
         {portfolioItems.map((item, index) => (
           <motion.div

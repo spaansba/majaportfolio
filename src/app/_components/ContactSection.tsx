@@ -23,7 +23,7 @@ function ContactSection() {
       />
       <div className={styles.contactOverlay}></div>
       <div className={styles.contactContent}>
-        <h2>Get in Touch</h2>
+        <h2>GET IN TOUCH</h2>
         <p>
           Lets work together to capture your special moments. Fill out the form below, and Ill get
           back to you as soon as possible.

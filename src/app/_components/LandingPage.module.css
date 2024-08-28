@@ -57,47 +57,6 @@
   margin-bottom: 1.5rem;
 }
 
-.roundedDivWrapper {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: calc(100px - (var(--scroll-progress) * 1px));
-  overflow: hidden;
-}
-
-.roundedDiv {
-  will-change: transform, height;
-  position: absolute;
-  left: 50%;
-  height: 750%;
-  width: 150%;
-  background-color: #f8f8f8;
-  transform: translate(-50%);
-  border-radius: 50% 50% 0 0;
-  z-index: 100;
-  background-color: #f8f8f8;
-  transition: height 0.1s ease-out;
-}
-.reversedRoundedDivWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: calc(100px * (var(--bottom-div-progress) / 100));
-  overflow: hidden;
-}
-.reversedRoundedDiv {
-  position: absolute;
-  left: 50%;
-  height: 770%;
-  transform: translate(-50%, -86.6%);
-  width: 170%;
-  background-color: #f8f8f8;
-  border-radius: 50%;
-  z-index: 100;
-}
-
 .button {
   background-color: #33333323;
   display: inline-block;
@@ -331,9 +290,6 @@
 
   .socialIcons {
     justify-content: center;
-  }
-  .roundedDivWrapper {
-    height: calc(70px - (var(--scroll-progress) * 1px));
   }
 }
 

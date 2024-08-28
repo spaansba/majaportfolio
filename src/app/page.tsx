@@ -10,7 +10,7 @@ export default function Home() {
     <main className={styles.main}>
       <HeroSection>
         <Image
-          src="https://utfs.io/f/a25e85e9-92b9-42fc-a7c2-c9dbd865284a-p1zbl.jpg"
+          src="https://utfs.io/f/2ae7657d-6ba6-4f10-8d13-023d209ad084-thqkup.jpg"
           alt="Hero image"
           layout="fill"
           objectFit="cover"

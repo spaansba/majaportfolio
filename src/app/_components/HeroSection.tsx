@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import React from "react"
 import styles from "./LandingPage.module.css"
 import RoundedDivWrapper from "./UI/RoundedDivWrapper"
-import WaveAnimation from "./UI/WaveAnimation"
 
 interface HeroSectionProps {
   children: React.ReactNode // Server side image so it instantly loads
@@ -13,7 +12,7 @@ function HeroSection({ children }: HeroSectionProps) {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 500], [0, 150])
   return (
-    <section className={styles.hero}>
+    <section id="hero" className={styles.hero}>
       {children}
       <motion.div
         className={styles.heroContent}
@@ -34,7 +33,7 @@ function HeroSection({ children }: HeroSectionProps) {
         </motion.a>
         {/* <WaveAnimation /> */}
       </motion.div>
-      <RoundedDivWrapper />
+      <RoundedDivWrapper upwards={true} parentId="hero" />
     </section>
   )
 }

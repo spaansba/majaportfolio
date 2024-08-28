@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import React from "react"
 import Image from "next/image"
 import styles from "./LandingPage.module.css"
+import RoundedDivWrapper from "./UI/RoundedDivWrapper"
 function ContactSection() {
   return (
     <motion.section
@@ -11,10 +12,9 @@ function ContactSection() {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
+      id="contact"
     >
-      {/* <div className={styles.reversedRoundedDivWrapper} data-scroll-progress={scrollProgress}>
-          <div className={styles.reversedRoundedDiv}></div>
-        </div> */}
+      <RoundedDivWrapper upwards={false} parentId="contact" />
       <Image
         src="https://utfs.io/f/a25e85e9-92b9-42fc-a7c2-c9dbd865284a-p1zbl.jpg"
         alt="Contact background"

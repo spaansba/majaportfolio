@@ -12,6 +12,7 @@ function AboutSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
+      id="about"
     >
       <h2>ABOUT ME</h2>
       <div className={styles.aboutContent}>

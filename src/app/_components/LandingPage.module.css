@@ -58,7 +58,7 @@
 }
 
 .button {
-  background-color: #33333323;
+  background-color: white;
   display: inline-block;
   padding: 0.8rem 1.6rem;
   color: #333;
@@ -66,11 +66,11 @@
   border-radius: 35px;
   font-size: 1.2rem;
   transition: transform 0.6s ease;
-  border: 2px solid #333;
+  border: 2px solid #706868;
 }
 
 .button:hover {
-  background-color: #333;
+  background-color: #706868;
   color: white;
 }
 

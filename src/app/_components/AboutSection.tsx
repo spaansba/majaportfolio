@@ -24,7 +24,7 @@ function AboutSection() {
           viewport={{ once: true }}
         >
           <Image
-            src="https://utfs.io/f/1ceee928-c6a8-4215-b20a-ee1708f35914-tfatz2.JPG"
+            src="https://utfs.io/f/1bd08dfe-c74a-4dd6-9419-5c28dc6773a0-1xbyw8.jpg"
             alt="Maja's profile picture"
             width={300}
             height={300}

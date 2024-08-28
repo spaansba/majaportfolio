@@ -42,7 +42,6 @@
   position: relative;
   text-align: center;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   z-index: 2;
   margin-top: -15vh;
 }
@@ -58,59 +57,13 @@
 }
 
 .button {
-  background-color: white;
   display: inline-block;
+  color: #000;
   padding: 0.8rem 1.6rem;
-  color: #333;
-  text-decoration: none;
-  border-radius: 35px;
-  font-size: 1.2rem;
+  background-color: white;
+  border-radius: 25px;
+  font-size: 0.8rem;
   transition: transform 0.6s ease;
-  border: 2px solid #706868;
-}
-
-.button:hover {
-  background-color: #706868;
-  color: white;
-}
-
-.galleryGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.galleryItem {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.galleryItem:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-}
-
-.galleryItem p {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 10px 0;
-  text-align: center;
-  font-size: 1.1rem;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  opacity: 0.5;
-  margin-top: -50px;
-  transform: translateY(100%);
-  z-index: 1;
-}
-
-.galleryItem:hover p {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .about p {

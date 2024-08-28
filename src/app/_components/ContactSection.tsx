@@ -8,7 +8,7 @@ function ContactSection() {
   return (
     <motion.section
       className={styles.contact}
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0.7 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}

@@ -9,6 +9,9 @@ const images = [
   "https://res.cloudinary.com/dyvotpxft/image/upload/v1723484005/21_wbsty7.png",
   "https://res.cloudinary.com/dyvotpxft/image/upload/v1723483677/5_tyr6bh.png",
   "https://res.cloudinary.com/dyvotpxft/image/upload/v1723483676/2_zja2bq.png",
+  "https://res.cloudinary.com/dyvotpxft/image/upload/v1723484005/21_wbsty7.png",
+  "https://res.cloudinary.com/dyvotpxft/image/upload/v1723483677/5_tyr6bh.png",
+  "https://res.cloudinary.com/dyvotpxft/image/upload/v1723483676/2_zja2bq.png",
 ]
 
 export default function WaveAnimation() {
@@ -22,7 +25,7 @@ export default function WaveAnimation() {
               alt={`Image ${index + 1}`}
               layout="fill"
               objectFit="cover"
-              style={{ borderRadius: "9%" }}
+              style={{ borderRadius: "0%" }}
             />
           </div>
         ))}

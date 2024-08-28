@@ -31,8 +31,8 @@ function HeroSection({ children }: HeroSectionProps) {
         >
           VIEW PORTFOLIO
         </motion.a>
-        {/* <WaveAnimation /> */}
       </motion.div>
+
       <RoundedDivWrapper upwards={true} parentId="hero" />
     </section>
   )

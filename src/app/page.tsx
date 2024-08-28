@@ -4,6 +4,7 @@ import AboutSection from "./_components/AboutSection"
 import PortfolioSection from "./_components/PortfolioSection"
 import ContactSection from "./_components/ContactSection"
 import Image from "next/image"
+import WaveAnimation from "./_components/UI/WaveAnimation"
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       </HeroSection>
       <AboutSection />
       <PortfolioSection />
+
       <ContactSection />
     </main>
   )

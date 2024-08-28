@@ -248,10 +248,3 @@
     justify-content: center;
   }
 }
-
-@media (hover: none) {
-  .galleryItem p {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}

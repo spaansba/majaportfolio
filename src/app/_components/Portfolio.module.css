@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
   position: relative;
@@ -35,7 +34,6 @@
   letter-spacing: 0.1rem;
   font-weight: 800;
   margin: 0;
-  text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
 }
 
 .UnderTitle {
@@ -44,7 +42,6 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  text-shadow: rgba(0, 0, 0, 1) 0 2px 3px;
 }
 
 .galleryItem:hover .galleryInfo {
@@ -54,4 +51,14 @@
 .galleryItem:hover .UnderTitle {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (hover: none) {
+  .UnderTitle {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .galleryInfo {
+    transform: translateY(-20px);
+  }
 }

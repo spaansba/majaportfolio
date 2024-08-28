@@ -1,8 +1,12 @@
 .about,
 .portfolio {
-  padding: 4rem 2rem;
+  padding-top: 4rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.portfolio {
+  padding-bottom: 4rem;
 }
 
 .contact {
@@ -157,7 +161,6 @@
   border-radius: 0px 0px 10px 10px;
   position: relative;
   z-index: 3;
-  padding: 4rem 2rem;
 }
 
 .aboutContent {

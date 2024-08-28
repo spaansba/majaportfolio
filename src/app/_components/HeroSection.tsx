@@ -24,15 +24,15 @@ function HeroSection({ children }: HeroSectionProps) {
       >
         <motion.h1>MAJA LINDQVIST</motion.h1>
         <motion.h2>PHOTOGRAPHY</motion.h2>
-        {/* <motion.a
+        <motion.a
           href="#portfolio"
           className={styles.button}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          View Portfolio
-        </motion.a> */}
-        <WaveAnimation />
+          VIEW PORTFOLIO
+        </motion.a>
+        {/* <WaveAnimation /> */}
       </motion.div>
       <RoundedDivWrapper />
     </section>

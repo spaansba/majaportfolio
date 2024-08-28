@@ -39,11 +39,15 @@ function PortfolioSection() {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              whileHover={{ scale: 1.05 }}
               viewport={{ once: true }}
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.2 },
+              }}
             >
               <div style={{ position: "relative", width: "100%", height: "270px" }}>
                 <Image
+                  quality={100}
                   src={item.src}
                   alt={item.alt}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

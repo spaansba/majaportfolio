@@ -1,0 +1,89 @@
+.aboutContent {
+  display: grid;
+  grid-template-rows: 75px 25px 200px 1fr;
+  grid-template-columns: 150px 75px 75px 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+  isolation: isolate;
+}
+
+.background {
+  z-index: -1;
+  border: 2px solid black;
+  grid-column: 3 / span 4;
+  grid-row: 2 / span 4;
+}
+
+.profilePictureContainer {
+  grid-row: 1 / span 3;
+  grid-column: 1 / span 3;
+}
+
+.iconsWrapper {
+  display: flex;
+  align-items: center;
+}
+.aboutText {
+  padding-left: 2rem;
+  grid-column: 4;
+  grid-row: 3 / span 4;
+}
+.aboutText p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.iconDiv {
+  font-size: 1.5rem; /* Icon size */
+  color: rgb(255, 255, 255);
+  margin-top: -4px;
+  width: 3.5rem;
+  height: 3rem;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profilePicture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aboutText h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.socialIcons a {
+  font-size: 1.5rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.socialIcons a:hover {
+  color: #0077b5;
+}
+
+@media (max-width: 768px) {
+  .socialIcons {
+    justify-content: center;
+  }
+  .aboutText {
+    width: 100%;
+  }
+  .aboutContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

@@ -61,4 +61,7 @@
   .galleryInfo {
     transform: translateY(-20px);
   }
+  .galleryGrid {
+    margin: 0 8px 0 8px;
+  }
 }

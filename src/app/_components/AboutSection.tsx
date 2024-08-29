@@ -73,18 +73,24 @@ function AboutSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3>Hi, Im ....</h3>
+          <h3>Hi, I’m Maja</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa reprehenderit vero
-            aperiam, omnis temporibus ipsum animi assumenda magni, molestiae magnam mollitia vitae
-            perspiciatis asperiores modi laudantium deserunt doloribus vel repudiandae nam libero
-            nostrum dolor sint odit. Fugiat molestiae numquam beatae.
+            I’m the one who always has a camera in hand at events, on travels, or even just popping
+            out my phone to capture those unique, everyday moments. For me, photography is all about
+            telling stories, collecting memories, and capturing the spontaneous feelings that make
+            life so special. Whether it’s documenting someone’s big day at an event or creating
+            powerful portraits with an aesthetic edge, I’m passionate about every shot I take. My
+            style mixes creativity with a dash of spontaneity, ensuring each image feels as unique
+            as the people in it.
           </p>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt similique modi illo?
-            Accusantium eum tempore itaque harum vel asperiores consequatur dolor sit illo error.
-            Cum voluptates beatae qui quibusdam ab natus culpa corporis, unde quae ratione suscipit
-            consequatur at eos!
+            When I’m not behind the lens, you’ll find me doing sports or exploring new
+            countries—though let’s be real, my camera’s never far away! I also love trying new foods
+            and then attempting to recreate them myself at home.
+          </p>
+          <p>
+            Right now, you can mostly find me in The Netherlands, Finland (Åland Islands), and
+            Sweden. Let’s capture some amazing photos and memories together!
           </p>
         </motion.div>
       </div>

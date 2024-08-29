@@ -12,19 +12,19 @@ function PortfolioSection() {
       src: "https://utfs.io/f/0899b333-0472-4712-b15f-65548be78b8f-1ta6os.jpg",
       alt: "Portraits",
       title: "Portraits",
-      underTitle: "<subtext>",
+      underTitle: "",
     },
     {
       src: "https://utfs.io/f/07d3c5dd-9c3a-4ca9-9e91-7c53327fc0ed-etcaly.jpg",
       alt: "Events",
       title: "Events",
-      underTitle: "<subtext>",
+      underTitle: "",
     },
     {
       src: "https://utfs.io/f/9324dc45-5cc8-41b0-8d33-39902b1a5a1d-fm57f4.jpg",
       alt: "Travel",
       title: "Travel",
-      underTitle: "<subtext>",
+      underTitle: "",
     },
   ]
   return (
@@ -62,16 +62,8 @@ function PortfolioSection() {
             </motion.div>
           ))}
         </div>
+        {/* Put it HEre */}
       </section>
-      {/* <motion.div
-   
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <WaveAnimation />
-      </motion.div> */}
     </>
   )
 }

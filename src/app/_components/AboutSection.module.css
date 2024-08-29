@@ -17,6 +17,7 @@
 .profilePictureContainer {
   grid-row: 1 / span 3;
   grid-column: 1 / span 3;
+  float: left;
 }
 
 .iconsWrapper {
@@ -34,13 +35,12 @@
   color: #555;
   margin-bottom: 1rem;
 }
+
 .iconDiv {
-  font-size: 1.5rem; /* Icon size */
-  color: rgb(255, 255, 255);
-  margin-top: -4px;
+  font-size: 1.8rem; /* Icon size */
+  color: rgb(0, 0, 0);
   width: 3.5rem;
   height: 3rem;
-  background-color: rgb(0, 0, 0);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,22 +56,6 @@
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: #333;
-}
-
-.socialIcons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.socialIcons a {
-  font-size: 1.5rem;
-  color: #333;
-  transition: color 0.3s ease;
-}
-
-.socialIcons a:hover {
-  color: #0077b5;
 }
 
 @media (max-width: 768px) {

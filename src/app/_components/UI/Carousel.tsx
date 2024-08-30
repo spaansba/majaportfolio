@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState } from "react"
 import Image from "next/image"
 import styles from "./Carousel.module.css"
+import { motion } from "framer-motion"
 
 const Carousel = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -81,7 +82,13 @@ const Carousel = () => {
     : false
 
   return (
-    <div className={styles.carouselWrapper}>
+    <motion.div
+      className={styles.carouselWrapper}
+      initial={{ opacity: 0, translateX: 80 }}
+      whileInView={{ opacity: 0.8, translateX: 0 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+    >
       <button
         className={`${styles.arrow} ${styles.leftArrow} ${isAtStart ? styles.hidden : ""}`}
         onClick={() => scroll("left")}
@@ -112,7 +119,7 @@ const Carousel = () => {
       >
         &#8250;
       </button>
-    </div>
+    </motion.div>
   )
 }
 

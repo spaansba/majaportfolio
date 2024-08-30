@@ -1,12 +1,22 @@
 "use client"
-import { motion } from "framer-motion"
-import React from "react"
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion"
+import React, { useRef, useEffect } from "react"
 import Image from "next/image"
 import styles from "./LandingPage.module.css"
 import RoundedDivWrapper from "./UI/RoundedDivWrapper"
+
 function ContactSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], [-30, 70])
+
   return (
     <motion.section
+      ref={sectionRef}
       className={styles.contact}
       initial={{ opacity: 0.7 }}
       whileInView={{ opacity: 1 }}
@@ -17,18 +27,17 @@ function ContactSection() {
       <RoundedDivWrapper upwards={false} parentId="contact" />
       <Image
         draggable={false}
-        src="https://utfs.io/f/99142ca6-146c-403d-97e9-48c6f098279a-thqkur.jpg
-"
+        src="https://utfs.io/f/99142ca6-146c-403d-97e9-48c6f098279a-thqkur.jpg"
         alt="Contact background"
         layout="fill"
         objectFit="cover"
       />
       <div className={styles.contactOverlay}></div>
-      <div className={styles.contactContent}>
+      <motion.div className={styles.contactContent} style={{ y }}>
         <h2>GET IN TOUCH</h2>
         <p>
-          Lets work together to capture your special moments. Fill out the form below, and Ill get
-          back to you as soon as possible.
+          Let&apos;s work together to capture your special moments. Fill out the form below, and
+          I&apos;ll get back to you as soon as possible.
         </p>
         <form className={styles.contactForm}>
           <input type="text" placeholder="Your Name" required />
@@ -38,7 +47,7 @@ function ContactSection() {
             Send Message
           </motion.button>
         </form>
-      </div>
+      </motion.div>
     </motion.section>
   )
 }

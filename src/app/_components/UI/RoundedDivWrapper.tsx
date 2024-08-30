@@ -1,27 +1,40 @@
 "use client"
-import React from "react"
+import React, { useRef } from "react"
 import styles from "./RoundedDivWrapper.module.css"
-import useScrollProgress from "./useScrollProgress"
+import { motion, useScroll, useTransform } from "framer-motion"
+
 interface RoundedDivWrapperProps {
   upwards: boolean
-  parentId: string
 }
 
-function RoundedDivWrapper({ upwards, parentId }: RoundedDivWrapperProps) {
-  const scrollProgress = useScrollProgress(upwards, parentId)
+function RoundedDivWrapper({ upwards }: RoundedDivWrapperProps) {
+  const wrapperDiv = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: wrapperDiv,
+    offset: ["start end", "end start"],
+  })
+
+  const fastAnimation = upwards ? 0.6 : 0.4
+  const maxHeight = upwards ? 100 : 50
+  const height = useTransform(scrollYProgress, [fastAnimation, 0], [0, maxHeight])
 
   return (
     <>
       {upwards ? (
-        <div className={styles.roundedDivWrapper} data-scroll-progress={scrollProgress}>
+        <motion.div className={styles.roundedDivWrapper} ref={wrapperDiv} style={{ height }}>
           <div className={styles.roundedDiv}></div>
-        </div>
+        </motion.div>
       ) : (
-        <div className={styles.reversedRoundedDivWrapper} data-scroll-progress={scrollProgress}>
+        <motion.div
+          className={styles.reversedRoundedDivWrapper}
+          ref={wrapperDiv}
+          style={{ height }}
+        >
           <div className={styles.reversedRoundedDiv}></div>
-        </div>
+        </motion.div>
       )}
     </>
   )
 }
+
 export default RoundedDivWrapper

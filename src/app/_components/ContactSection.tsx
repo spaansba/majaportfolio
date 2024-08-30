@@ -24,7 +24,7 @@ function ContactSection() {
       viewport={{ once: true }}
       id="contact"
     >
-      <RoundedDivWrapper upwards={false} parentId="contact" />
+      <RoundedDivWrapper upwards={false} />
       <Image
         draggable={false}
         src="https://utfs.io/f/99142ca6-146c-403d-97e9-48c6f098279a-thqkur.jpg"

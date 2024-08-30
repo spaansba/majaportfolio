@@ -4,7 +4,6 @@ import AboutSection from "./_components/AboutSection"
 import PortfolioSection from "./_components/PortfolioSection"
 import ContactSection from "./_components/ContactSection"
 import Image from "next/image"
-import ImageCarousel from "./_components/UI/ImageCarousel"
 
 export default function Home() {
   return (

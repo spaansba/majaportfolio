@@ -22,7 +22,7 @@ const useScrollProgress = (upwards: boolean, startElementId: string) => {
       : startRef.current.getBoundingClientRect().bottom
 
     const scrollPosition = window.scrollY - startElementLocation
-    const maxScroll = 500 // how fast the height decreases (higher is slower)
+    const maxScroll = 700 // how fast the height decreases (higher is slower)
     // console.log("window.scrollY ", window.scrollY)
     // console.log("topOfStartElement ", startElementLocation)
     // console.log("scrollPosition ", scrollPosition)

@@ -25,6 +25,7 @@ function AboutSection() {
       viewport={{ once: true }}
       id="about"
     >
+      <h2>About Me</h2>
       <div className={astyles.aboutContent}>
         <motion.div
           className={astyles.profilePictureContainer}
@@ -55,17 +56,9 @@ function AboutSection() {
               </div>
             ))}
           </div>
-          {/* <Image
-            src="https://utfs.io/f/1bd08dfe-c74a-4dd6-9419-5c28dc6773a0-1xbyw8.jpg"
-            alt="Maja's profile picture"
-            width={300}
-            height={300}
-            className={styles.profilePicture}
-          /> */}
         </motion.div>
         <div className={astyles.background}></div>
 
-        <h2 className={astyles.title}>ABOUT ME</h2>
         <motion.div
           className={astyles.aboutText}
           initial={{ x: 50, opacity: 0 }}

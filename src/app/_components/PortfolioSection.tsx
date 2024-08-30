@@ -4,7 +4,7 @@ import React from "react"
 import styles from "./LandingPage.module.css"
 import pstyles from "./Portfolio.module.css"
 import Image from "next/image"
-import WaveAnimation from "./UI/WaveAnimation"
+import ImageCarousel from "./UI/ImageCarousel"
 
 function PortfolioSection() {
   const portfolioItems = [
@@ -62,8 +62,8 @@ function PortfolioSection() {
             </motion.div>
           ))}
         </div>
-        {/* Put it HEre */}
       </section>
+      <ImageCarousel />
     </>
   )
 }

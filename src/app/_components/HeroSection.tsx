@@ -32,7 +32,6 @@ function HeroSection({ children }: HeroSectionProps) {
           VIEW PORTFOLIO
         </motion.a>
       </motion.div>
-
       <RoundedDivWrapper upwards={true} parentId="hero" />
     </section>
   )

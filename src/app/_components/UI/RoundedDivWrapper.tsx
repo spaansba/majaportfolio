@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import styles from "./RoundedDivWrapper.module.css"
 import useScrollProgress from "./useScrollProgress"
 interface RoundedDivWrapperProps {

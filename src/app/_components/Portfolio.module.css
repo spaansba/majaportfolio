@@ -53,6 +53,20 @@
   transform: translateY(0);
 }
 
+.carousel {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.carouselItem {
+  width: 200px;
+  height: 400px;
+  background-color: red;
+  display: inline-block;
+  margin-right: 2rem;
+}
+
 @media (hover: none) {
   .UnderTitle {
     opacity: 1;

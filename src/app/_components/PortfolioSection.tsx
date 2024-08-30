@@ -1,10 +1,10 @@
 "use client"
-import { motion } from "framer-motion"
 import React from "react"
+import { motion } from "framer-motion"
+import Image from "next/image"
 import styles from "./LandingPage.module.css"
 import pstyles from "./Portfolio.module.css"
-import Image from "next/image"
-import ImageCarousel from "./UI/ImageCarousel"
+import Carousel from "./UI/Carousel"
 
 function PortfolioSection() {
   const portfolioItems = [
@@ -27,6 +27,7 @@ function PortfolioSection() {
       underTitle: "",
     },
   ]
+
   return (
     <>
       <section id="portfolio" className={styles.portfolio}>
@@ -47,6 +48,7 @@ function PortfolioSection() {
             >
               <div style={{ position: "relative", width: "100%", height: "270px" }}>
                 <Image
+                  draggable={false}
                   quality={100}
                   src={item.src}
                   alt={item.alt}
@@ -63,7 +65,7 @@ function PortfolioSection() {
           ))}
         </div>
       </section>
-      <ImageCarousel />
+      <Carousel />
     </>
   )
 }

@@ -16,6 +16,7 @@ function ContactSection() {
     >
       <RoundedDivWrapper upwards={false} parentId="contact" />
       <Image
+        draggable={false}
         src="https://utfs.io/f/99142ca6-146c-403d-97e9-48c6f098279a-thqkur.jpg
 "
         alt="Contact background"

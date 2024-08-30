@@ -7,9 +7,23 @@ const ImageCarousel: React.FC = () => {
   const ringRef = useRef<HTMLDivElement>(null)
   const imagesRef = useRef<HTMLDivElement[]>([])
 
+  const images: string[] = [
+    "/061624_1.5.jpg",
+    "/061624_77.jpg",
+    "/061624_77.jpg",
+    "/061624_77.jpg",
+    "/061624_77.jpg",
+    "/061624_77.jpg",
+    "/061624_77.jpg",
+    "/061624_77.jpg",
+    "/061624_77.jpg",
+    "/061624_77.jpg",
+  ]
+
   useEffect(() => {
     let xPos = 0
 
+    console.log("Image paths:", images)
     const timeline = gsap
       .timeline()
       .set(ringRef.current, { rotationY: 180, cursor: "grab" })
@@ -17,9 +31,15 @@ const ImageCarousel: React.FC = () => {
         rotateY: (i: number) => i * -36,
         transformOrigin: "50% 50% 500px",
         z: -500,
-        backgroundImage: (i: number) => `url(https://picsum.photos/id/${i + 32}/600/400/)`,
+        backgroundImage: (i: number) => {
+          const bg = `url(${images[i]})`
+          console.log(`Image ${i} background:`, bg)
+          return bg
+        },
         backgroundPosition: (i: number) => getBgPos(i),
         backfaceVisibility: "hidden",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
       })
       .from(imagesRef.current, {
         duration: 1.5,

@@ -21,6 +21,7 @@ export default function WaveAnimation() {
         {images.map((src, index) => (
           <div key={index} className={styles.item} tabIndex={0}>
             <Image
+              draggable={false}
               quality={100}
               src={src}
               alt={`Image ${index + 1}`}

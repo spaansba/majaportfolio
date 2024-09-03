@@ -20,5 +20,6 @@
 @media (max-width: 768px) {
   .container {
     --size: 2rem;
+    top: 7rem;
   }
 }

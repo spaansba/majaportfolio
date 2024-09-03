@@ -45,9 +45,9 @@ export const TransitionLink = ({ children, href, ...props }: TransitionLinkProps
     // Different page, perform transition
     const body = document.querySelector("body")
     body?.classList.add("page-transition")
-    await sleep(200)
+    await sleep(400)
     router.push(href)
-    await sleep(300)
+    await sleep(400)
     body?.classList.remove("page-transition")
   }
 

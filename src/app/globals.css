@@ -52,7 +52,7 @@ body {
     rgb(var(--background-start-rgb));
   transition-property: opacity, background-color, transform, filter;
   transition-timing-function: linear;
-  transition-duration: 0.2s;
+  transition-duration: 0.4s;
 }
 
 .page-transition {

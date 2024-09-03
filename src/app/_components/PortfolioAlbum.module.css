@@ -95,4 +95,20 @@
   .heroContent h1 {
     font-size: 2.2rem;
   }
+
+  .extraWide {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 400px) {
+  .extraWide,
+  .extraLarge,
+  .wide {
+    grid-column: span 2;
+  }
+
+  .heroContent h1 {
+    font-size: 1.5rem;
+  }
 }

@@ -38,7 +38,7 @@ function ScrollToAfterHero({ heroRef }: ScrollToAfterHeroProps) {
     }
   }
   return (
-    <div className={styles.container} title="Scroll down">
+    <div className={styles.container}>
       <motion.button
         className={styles.button}
         onClick={scrollToEndOfHero}

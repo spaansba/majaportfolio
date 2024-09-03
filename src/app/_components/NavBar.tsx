@@ -64,7 +64,9 @@ function NavBar() {
               checked={isMenuOpen}
               onChange={toggleMenu}
             />
-            <p className={styles.name}>MAJA LINDQVIST</p>
+            <TransitionLink href="/">
+              <p className={styles.name}>MAJA LINDQVIST</p>
+            </TransitionLink>
           </div>
           {NavBarItems.map((item) => (
             <div key={item.title} className={styles.navItem}>

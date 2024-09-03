@@ -41,7 +41,7 @@ export default function ScrollToTopButton() {
   return (
     <AnimatePresence>
       {isVisible && (
-        <div className={styles.container} title="Scroll to top">
+        <div className={styles.container}>
           <motion.button
             className={styles.button}
             onClick={scrollToTop}

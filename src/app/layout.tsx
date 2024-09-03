@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 import { Inter, Raleway } from "next/font/google"
 import "./globals.css"
-
 import NavBar from "./_components/NavBar"
+import ScrollToTopButton from "./_components/UI/ScrollToTopButton"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const raleway = Raleway({
@@ -32,8 +32,8 @@ export default function RootLayout({
         <header>
           <NavBar />
         </header>
-
         {children}
+        <ScrollToTopButton />
       </body>
     </html>
   )

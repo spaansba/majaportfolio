@@ -51,3 +51,16 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+.heroContent {
+  text-transform: uppercase;
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.heroContent h1 {
+  font-size: 4rem;
+  margin-block: 0;
+}

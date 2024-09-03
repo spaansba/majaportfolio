@@ -10,6 +10,7 @@
   left: 0;
   z-index: 1000;
   transition: background-color 0.3s ease;
+  user-select: none;
 }
 
 .logoContainer {
@@ -116,19 +117,17 @@
 
 .fullScreenMenu {
   color: rgb(107, 104, 104);
-  overflow: hidden;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 999;
-  min-height: 500px;
 }
 
 .fullScreenMenuItem:hover {

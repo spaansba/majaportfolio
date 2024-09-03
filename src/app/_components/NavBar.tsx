@@ -1,9 +1,9 @@
 "use client"
-
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React, { useEffect, useRef, useState } from "react"
 import styles from "./NavBar.module.css"
+import { TransitionLink } from "./utils/TransitionLink"
 
 function NavBar() {
   const pathname = usePathname()
@@ -49,7 +49,6 @@ function NavBar() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
-    document.body.style.overflow = isMenuOpen ? "auto" : "hidden"
   }
 
   return (
@@ -69,9 +68,9 @@ function NavBar() {
           </div>
           {NavBarItems.map((item) => (
             <div key={item.title} className={styles.navItem}>
-              <Link href={item.href}>
+              <TransitionLink href={item.href}>
                 <p className={styles.navItemTitle}>{item.title}</p>
-              </Link>
+              </TransitionLink>
             </div>
           ))}
         </div>

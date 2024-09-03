@@ -11,12 +11,12 @@ const Carousel = () => {
   const [scrollLeft, setScrollLeft] = useState(0)
   const imageWidth = 400
   const images = [
-    { id: "1", src: "/061624_1.5.jpg", alt: "Portraits" },
+    { id: "1", src: "/portraits/061624_1.5.jpg", alt: "Portraits" },
     { id: "2", src: "/061624_77.jpg", alt: "Events" },
-    { id: "3", src: "/062624_26.jpg", alt: "Travel" },
-    { id: "4", src: "/072224_31.jpg", alt: "Portraits" },
-    { id: "5", src: "/072324_53.jpg", alt: "Events" },
-    { id: "6", src: "/080124_50.jpg", alt: "Travel" },
+    { id: "3", src: "/portraits/062624_26.jpg", alt: "Travel" },
+    { id: "4", src: "/portraits/072224_31.jpg", alt: "Portraits" },
+    { id: "5", src: "/portraits/072324_53.jpg", alt: "Events" },
+    { id: "6", src: "/portraits/080124_50.jpg", alt: "Travel" },
     { id: "7", src: "/080424_99.jpg", alt: "Portraits" },
     { id: "8", src: "/081924_169.jpg", alt: "Events" },
     { id: "9", src: "/081924_172.jpg", alt: "Portraits" },

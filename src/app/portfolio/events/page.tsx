@@ -60,7 +60,7 @@ export default function Home() {
           transition={{ duration: 1 }}
           style={{ y }}
         >
-          <h1>Portraits</h1>
+          <h1>Events</h1>
         </motion.div>
         <Image
           src="https://utfs.io/f/0899b333-0472-4712-b15f-65548be78b8f-1ta6os.jpg"

@@ -4,7 +4,7 @@ import Image from "next/image"
 import ImageModal, { type ImageProps } from "@/app/_components/UI/ImageModal"
 import { useState } from "react"
 import { useCallback } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { useScroll, useTransform } from "framer-motion"
 
 const images: ImageProps[] = [
   { src: "/portraits/061624_1.5.jpg", alt: "Image 1", size: "medium" },
@@ -53,15 +53,9 @@ export default function Home() {
       <ImageModal image={image} onClose={closeModal} />
 
       <div id="hero" className={styles.hero}>
-        <motion.div
-          className={styles.heroContent}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          style={{ y }}
-        >
-          <h1>Portraits</h1>
-        </motion.div>
+        <div className={styles.heroContent}>
+          <h1>Travel</h1>
+        </div>
         <Image
           src="https://utfs.io/f/0899b333-0472-4712-b15f-65548be78b8f-1ta6os.jpg"
           alt="Hero image"

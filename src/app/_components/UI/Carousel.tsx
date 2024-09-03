@@ -50,7 +50,7 @@ const Carousel = () => {
     } else if (e.type === "touchmove") {
       clientX = (e as React.TouchEvent).touches[0].clientX
       x = clientX - container.offsetLeft
-      walk = (x - startX) / 4 // Adjust to control swipe speed
+      walk = x - startX // Adjust to control swipe speed
     } else {
       return
     }

@@ -5,7 +5,6 @@ import Image from "next/image"
 import styles from "./LandingPage.module.css"
 import pstyles from "./Portfolio.module.css"
 import Carousel from "./UI/Carousel"
-import Link from "next/link"
 import { TransitionLink } from "./utils/TransitionLink"
 
 function PortfolioSection() {

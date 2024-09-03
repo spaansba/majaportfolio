@@ -36,7 +36,7 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
     }
   }
   const variants = {
-    hidden: { scale: 1.5 },
+    hidden: { scale: 1.1 },
     visible: {
       scale: 1,
       transition: { duration: 0.8, ease: "easeOut" },
@@ -53,7 +53,7 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
         <motion.div
           className={styles.modalOverlay}
           onClick={closeModal}
-          initial={{ opacity: 0.2 }}
+          initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}

@@ -1,0 +1,10 @@
+.container {
+  position: absolute;
+  left: calc(50% - 24px);
+  top: 13rem;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+}

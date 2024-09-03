@@ -3,8 +3,11 @@ import styles from "./portfolio.module.css"
 import Image from "next/image"
 import { TransitionLink } from "../_components/utils/TransitionLink"
 import { motion, useScroll, useTransform } from "framer-motion"
+import ScrollToAfterHero from "../_components/UI/ScrollToAfterHero"
+import { useRef } from "react"
 
 export default function Home() {
+  const heroRef = useRef<HTMLDivElement>(null)
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 500], [0, 150])
   const portfolioItems = [
@@ -33,7 +36,7 @@ export default function Home() {
 
   return (
     <div className={styles.contentHolder}>
-      <div id="hero" className={styles.hero}>
+      <div ref={heroRef} id="hero" className={styles.hero}>
         <motion.div
           className={styles.heroContent}
           initial={{ opacity: 0 }}
@@ -42,6 +45,7 @@ export default function Home() {
           style={{ y }}
         >
           <h1>Portfolio</h1>
+          <ScrollToAfterHero heroRef={heroRef} />
         </motion.div>
         <Image
           draggable={false}

@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Inter, Raleway } from "next/font/google"
 import "./globals.css"
 
+import NavBar from "./_components/NavBar"
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const raleway = Raleway({
   subsets: ["latin"],
@@ -26,7 +28,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${raleway.variable}`}>
-      <body> {children}</body>
+      <body>
+        <header>
+          <NavBar />
+        </header>
+
+        {children}
+      </body>
     </html>
   )
 }

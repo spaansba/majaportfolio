@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useState } from "react"
 import Image from "next/image"
 import styles from "./Carousel.module.css"
-import { motion } from "framer-motion"
+import { m, motion } from "framer-motion"
 
 const Carousel = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -22,35 +22,37 @@ const Carousel = () => {
     { id: "9", src: "/081924_172.jpg", alt: "Portraits" },
   ]
 
-  const handleMouseDown = (e: MouseEvent) => {
+  const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
     const container = containerRef.current
     if (!container) return
     setIsDragging(true)
-    setStartX(e.pageX - container.offsetLeft)
+    const pageX = "touches" in e ? e.touches[0].pageX : e.pageX
+    setStartX(pageX - container.offsetLeft)
     setScrollLeft(container.scrollLeft)
   }
 
-  const handleMouseUp = () => {
+  const handleEnd = () => {
     setIsDragging(false)
   }
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDragging) return
-    e.preventDefault()
     const container = containerRef.current
     if (!container) return
-    const x = e.pageX - container.offsetLeft
-    const walk = (x - startX) * 2
-    container.scrollLeft = scrollLeft - walk
-  }
 
-  const scroll = (direction: "left" | "right") => {
-    const container = containerRef.current
-    if (!container) return
-    container.scrollBy({
-      left: direction === "left" ? -imageWidth : imageWidth,
-      behavior: "smooth",
-    })
+    let clientX: number
+
+    if (e.type === "mousemove") {
+      clientX = (e as React.MouseEvent).clientX
+    } else if (e.type === "touchmove") {
+      clientX = (e as React.TouchEvent).touches[0].clientX
+    } else {
+      return
+    }
+
+    const x = clientX - container.offsetLeft
+    const walk = (x - startX) / 15 // Adjust to control swipe speed
+    container.scrollLeft = scrollLeft - walk
   }
 
   useEffect(() => {
@@ -62,19 +64,21 @@ const Carousel = () => {
     }
 
     container.addEventListener("scroll", handleScroll)
-    container.addEventListener("mousedown", handleMouseDown)
-    container.addEventListener("mouseleave", handleMouseUp)
-    container.addEventListener("mouseup", handleMouseUp)
-    container.addEventListener("mousemove", handleMouseMove)
 
     return () => {
       container.removeEventListener("scroll", handleScroll)
-      container.removeEventListener("mousedown", handleMouseDown)
-      container.removeEventListener("mouseleave", handleMouseUp)
-      container.removeEventListener("mouseup", handleMouseUp)
-      container.removeEventListener("mousemove", handleMouseMove)
     }
-  }, [isDragging, startX])
+  }, [])
+
+  const scroll = (direction: "left" | "right") => {
+    const container = containerRef.current
+    const marginRightSize = 10
+    if (!container) return
+    container.scrollBy({
+      left: direction === "left" ? -imageWidth - marginRightSize : imageWidth + marginRightSize,
+      behavior: "smooth",
+    })
+  }
 
   const isAtStart = scrollLeft === 0
   const isAtEnd = containerRef.current
@@ -96,7 +100,17 @@ const Carousel = () => {
       >
         &#8249;
       </button>
-      <div className={styles.carouselContainer} ref={containerRef}>
+      <div
+        className={styles.carouselContainer}
+        ref={containerRef}
+        onMouseDown={handleStart}
+        onMouseLeave={handleEnd}
+        onMouseUp={handleEnd}
+        onMouseMove={handleMove}
+        onTouchStart={handleStart}
+        onTouchEnd={handleEnd}
+        onTouchMove={handleMove}
+      >
         <div className={styles.carousel}>
           {images.map((image) => (
             <div key={image.id} className={styles.carouselItem}>

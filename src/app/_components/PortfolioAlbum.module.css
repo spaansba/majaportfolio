@@ -7,6 +7,7 @@
 }
 
 .hero {
+  text-transform: uppercase;
   height: 100vh;
   width: 100%;
   position: relative;
@@ -16,6 +17,18 @@
   overflow: hidden;
 }
 
+.heroContent {
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.heroContent h1 {
+  font-size: 4rem;
+  margin-block: 0;
+}
+
 .photoGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -23,7 +36,7 @@
   grid-auto-flow: dense;
   gap: 16px;
   padding: 16px;
-  width: 100%;
+
   min-height: 100vh;
 }
 
@@ -31,9 +44,19 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
-
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+}
+
+.container {
+  position: absolute;
+  left: 45%;
+  top: 13rem;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
 }
 
 .imageWrapper:hover {
@@ -80,21 +103,12 @@
   grid-column: span 3;
 }
 
-.heroContent {
-  position: relative;
-  text-align: center;
-  color: white;
-  z-index: 2;
-}
-
-.heroContent h1 {
-  font-size: 4rem;
-  margin-block: 0;
-}
-
 @media (max-width: 768px) {
   .photoGrid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-auto-rows: 150px;
+  }
+  .heroContent h1 {
+    font-size: 2.2rem;
   }
 }

@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link"
 import styles from "./portfolio.module.css"
 import Image from "next/image"
 import { TransitionLink } from "../_components/utils/TransitionLink"

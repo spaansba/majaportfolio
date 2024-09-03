@@ -32,7 +32,7 @@ function ScrollToAfterHero({ heroRef }: ScrollToAfterHeroProps) {
     if (heroRef.current) {
       const heroHeight = heroRef.current.offsetHeight
       window.scrollTo({
-        top: heroHeight,
+        top: heroHeight + 1, // +1 to make the hero completely invisible making the navbar background color visible
         behavior: "smooth",
       })
     }

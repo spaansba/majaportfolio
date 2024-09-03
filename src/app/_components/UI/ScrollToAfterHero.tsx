@@ -48,14 +48,7 @@ function ScrollToAfterHero({ heroRef }: ScrollToAfterHeroProps) {
         exit="exit"
         whileHover="whileHover"
       >
-        <svg
-          fill="#fff"
-          height="48px" // Change left: calc(50% - 24px); on container if changing this
-          width="48px"
-          version="1.1"
-          id="Layer_1"
-          viewBox="0 0 330 330"
-        >
+        <svg className={styles.svg} fill="#fff" version="1.1" id="Layer_1" viewBox="0 0 330 330">
           <path
             id="XMLID_224_"
             d="M4.394,100.607l150.004,150C157.21,253.42,161.026,255,165.004,255c3.979,0,7.794-1.581,10.607-4.394

@@ -1,43 +1,46 @@
 "use client"
 import React, { useEffect, useRef } from "react"
 import Swiper from "swiper"
-import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules"
+import { Navigation, Autoplay, FreeMode, Keyboard, EffectCoverflow } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
 import "swiper/css/scrollbar"
-import styles from "./ImageCarousel.module.css"
 import Image from "next/image"
-
 export default function ImageCarousel() {
   const swiperRef = useRef(null)
 
   useEffect(() => {
     if (swiperRef.current) {
+      // module info: https://swiperjs.com/types/modules
       const swiper = new Swiper(swiperRef.current, {
-        modules: [Navigation, Pagination, Scrollbar, Autoplay],
+        modules: [Navigation, Autoplay, FreeMode, Keyboard, EffectCoverflow],
         direction: "horizontal",
         loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-        },
+
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
-        scrollbar: {
-          el: ".swiper-scrollbar",
+        keyboard: {
+          enabled: true,
         },
+
+        freeMode: {
+          enabled: true,
+          momentumRatio: 0.7,
+          momentumBounceRatio: 0.7,
+          momentumVelocityRatio: 0.7,
+          sticky: false,
+        },
+        grabCursor: true,
+        slidesPerView: 1,
         spaceBetween: 0,
         autoplay: {
-          delay: 2000,
-          disableOnInteraction: false,
+          delay: 2500,
         },
-        // Responsive breakpoints
+
         breakpoints: {
-          400: {
-            slidesPerView: 1,
-          },
           800: {
             slidesPerView: 2,
           },
@@ -74,19 +77,17 @@ export default function ImageCarousel() {
   ]
 
   return (
-    <div className={`${styles.swipers} swiper`} ref={swiperRef}>
+    <div className="swiper" ref={swiperRef}>
       <div className="swiper-wrapper">
         {images.map((image) => (
-          <div key={image.id} className={`${styles.swiperSlide} swiper-slide`}>
+          <div key={image.id} className="swiper-slide">
             <Image
-              className={styles.img}
               draggable={false}
               src={image.src}
               alt={image.alt}
               layout="responsive"
               width={100}
               height={100}
-              sizes="(max-width: 400px) 100vw, (max-width: 800px) 50vw, (max-width: 1200px) 33vw, (max-width: 1600px) 25vw, (max-width: 2000px) 20vw, 16vw"
             />
           </div>
         ))}

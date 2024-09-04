@@ -6,9 +6,10 @@ import { usePathname, useRouter } from "next/navigation"
 interface TransitionLinkProps extends LinkProps {
   children: React.ReactNode
   href: string
+  extraOnClick?: (e: React.MouseEvent) => void
 }
 
-export const TransitionLink = ({ children, href, ...props }: TransitionLinkProps) => {
+export const TransitionLink = ({ children, href, extraOnClick, ...props }: TransitionLinkProps) => {
   const router = useRouter()
   const pathname = usePathname()
 
@@ -56,7 +57,7 @@ export const TransitionLink = ({ children, href, ...props }: TransitionLinkProps
   }
 
   return (
-    <Link onClick={(e) => handleTransition(e)} href={href} {...props}>
+    <Link onClick={(e) => [handleTransition(e), extraOnClick?.(e)]} href={href} {...props}>
       {children}
     </Link>
   )

@@ -26,6 +26,8 @@
   right: 0;
   height: 100px;
   overflow: hidden;
+
+  display: none; /* Hide for now */
 }
 .reversedRoundedDiv {
   position: absolute;
@@ -38,11 +40,9 @@
   z-index: 100;
 }
 
-@media (max-width: 768px) {
-  .roundedDivWrapper {
-    height: calc(70px - (var(--scroll-progress-hero) * 1px));
-  }
+@media (max-width: 800px) {
+  .roundedDivWrapper,
   .reversedRoundedDivWrapper {
-    height: calc(70px * (var(--scroll-progress-contact) / 100));
+    display: none;
   }
 }

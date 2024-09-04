@@ -1,8 +1,9 @@
 .navbar {
+  text-transform: uppercase;
   letter-spacing: 0.2rem;
   padding: 0 1.66667rem;
   display: block;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   width: 100%;
   position: fixed;
   top: 0;
@@ -22,28 +23,45 @@
 }
 
 .navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
   border-bottom: 1px solid rgb(0, 0, 0);
   transition: border-bottom 0.5s ease;
 }
 
+.navItem:hover {
+  border-bottom-color: rgba(255, 255, 255, 0.87);
+}
+
+.svg {
+  transition: fill 0.5s ease;
+  margin-block: 0.7em 0.2em;
+  padding-top: 3px;
+}
+
+.navItem:hover .svg {
+  fill: #fff;
+}
+
 .name {
-  margin-block-start: 0.7em;
-  margin-block-end: 0.2em;
+  margin-block: 0.7em 0.2em;
 }
 
 .navItemTitle {
-  margin-block-start: 1.1em;
-  margin-block-end: 0.2em;
+  margin-block: 1.1em 0.2em;
   font-size: 0.8rem;
 }
 
-.whiteBg {
+.glassBackground {
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(20px);
 }
 
-.navItem:hover {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.87);
+.whiteBackground {
+  background-color: rgba(255, 255, 255);
 }
 
 .leftNav {
@@ -54,7 +72,91 @@
   gap: 2.3rem;
 }
 
-.menu {
+.fullScreenMenu {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.fullScreenTitle {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+
+.fullScreenTitle:hover {
+  color: black;
+}
+
+.fullScreenNavItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svgMobile {
+  position: absolute;
+  right: -30px;
+}
+
+.menuOpen {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  z-index: 1001;
+  min-width: 130px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.submenuItem {
+  text-align: center;
+  letter-spacing: 0.1rem;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.navItem.open .submenu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.submenuItem:hover {
+  background-color: #f0f0f0;
+}
+
+.fullScreenSubmenu {
+  margin-left: 1rem;
+}
+
+.fullScreenSubmenuItem {
+  font-size: 1.5rem;
+  margin: 0.3rem 0;
+  cursor: pointer;
+}
+
+.fullScreenSubmenuItem:hover {
+  color: black;
+}
+
+.burgerMenu {
   --s: 19px;
   --c: black;
   margin-top: 0.8em;
@@ -62,18 +164,19 @@
   aspect-ratio: 1;
   border: none;
   padding: 0;
-  border-inline: calc(var(--s) / 2) solid #0000;
+  border-inline: calc(var(--s) / 2) solid transparent;
   box-sizing: content-box;
-  --_g1: linear-gradient(var(--c) 20%, #0000 0 80%, var(--c) 0) no-repeat content-box border-box;
-  --_g2: radial-gradient(circle closest-side at 50% 12.5%, var(--c) 95%, #0000) repeat-y content-box
+  --_g1: linear-gradient(var(--c) 20%, transparent 0 80%, var(--c) 0) no-repeat content-box
     border-box;
+  --_g2: radial-gradient(circle closest-side at 50% 12.5%, var(--c) 95%, transparent) repeat-y
+    content-box border-box;
   background: var(--_g2) left var(--_p, 0px) top,
     var(--_g1) left calc(var(--s) / 10 + var(--_p, 0px)) top, var(--_g2) right var(--_p, 0px) top,
     var(--_g1) right calc(var(--s) / 10 + var(--_p, 0px)) top;
   background-size: 20% 80%, 40% 100%;
   position: relative;
   clip-path: inset(0 25%);
-  -webkit-mask: linear-gradient(90deg, #0000, #000 25% 75%, #0000);
+  -webkit-mask: linear-gradient(90deg, transparent, #000 25% 75%, transparent);
   cursor: pointer;
   transition: background-position 0.3s var(--_s, 0.3s), clip-path 0s var(--_s, 0.6s);
   -webkit-appearance: none;
@@ -82,8 +185,8 @@
   display: none;
 }
 
-.menu:before,
-.menu:after {
+.burgerMenu::before,
+.burgerMenu::after {
   content: "";
   position: absolute;
   border-radius: var(--s);
@@ -92,18 +195,21 @@
   transition: transform 0.3s calc(0.3s - var(--_s, 0.3s));
 }
 
-.menu:checked {
+.burgerMenu:checked {
   clip-path: inset(0);
   --_p: calc(-1 * var(--s));
   --_s: 0s;
 }
-.menu:checked:before {
+
+.burgerMenu:checked::before {
   transform: rotate(45deg);
 }
-.menu:checked:after {
+
+.burgerMenu:checked::after {
   transform: rotate(-45deg);
 }
-.menu:focus-visible {
+
+.burgerMenu:focus-visible {
   clip-path: none;
   -webkit-mask: none;
   border: none;
@@ -111,38 +217,8 @@
   outline-offset: 5px;
 }
 
-.fullScreenMenu {
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.fullScreenMenuItem:hover {
-  color: black;
-}
-
-.fullScreenMenuItem {
-  font-size: 2rem;
-  margin: 0.5rem 0;
-  cursor: pointer;
-}
-
-.menuOpen {
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-}
-
 @media (max-width: 768px) {
-  .menu {
+  .burgerMenu {
     display: block;
   }
   .navItem {

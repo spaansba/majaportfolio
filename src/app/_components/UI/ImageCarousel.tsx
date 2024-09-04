@@ -28,7 +28,6 @@ export default function ImageCarousel() {
         scrollbar: {
           el: ".swiper-scrollbar",
         },
-        slidesPerView: 7,
         spaceBetween: 0,
         autoplay: {
           delay: 2000,

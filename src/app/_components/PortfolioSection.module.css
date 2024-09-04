@@ -67,6 +67,14 @@
   margin-right: 2rem;
 }
 
+.carouselWrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
 @media (hover: none) {
   .UnderTitle {
     opacity: 1;

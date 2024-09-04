@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useState } from "react"
 import Image from "next/image"
 import styles from "./Carousel.module.css"
-import { m, motion } from "framer-motion"
+import { motion } from "framer-motion"
 
 const Carousel = () => {
   const containerRef = useRef<HTMLDivElement>(null)

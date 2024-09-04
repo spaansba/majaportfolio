@@ -3,9 +3,9 @@ import React from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import styles from "./LandingPage.module.css"
-import pstyles from "./Portfolio.module.css"
-import Carousel from "./UI/Carousel"
+import pstyles from "./PortfolioSection.module.css"
 import { TransitionLink } from "./utils/TransitionLink"
+import ImageCarousel from "./UI/ImageCarousel"
 
 function PortfolioSection() {
   const portfolioItems = [
@@ -70,7 +70,8 @@ function PortfolioSection() {
           ))}
         </div>
       </section>
-      <Carousel />
+
+      <ImageCarousel />
     </>
   )
 }

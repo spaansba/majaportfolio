@@ -1,4 +1,9 @@
 .navbar {
+  --backgroundTransistion: background-color 0.7s ease, backdrop-filter 0.7s ease;
+  --navItemFontSize: 0.8rem;
+  --blockPadding: 1.1rem 0.2rem;
+  --bottomExtraMargin: 0.4rem;
+  transition: var(--backgroundTransistion);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   padding: 0 1.66667rem;
@@ -9,8 +14,14 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  transition: background-color 0.3s ease;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(0px);
   user-select: none;
+}
+
+.glassBackground {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
 }
 
 .logoContainer {
@@ -19,7 +30,7 @@
 }
 
 .margin {
-  height: 0.4rem;
+  height: var(--bottomExtraMargin);
 }
 
 .navItem {
@@ -51,17 +62,53 @@
 }
 
 .navItemTitle {
-  margin-block: 1.1em 0.2em;
-  font-size: 0.8rem;
+  margin-block: var(--blockPadding);
+  font-size: var(--navItemFontSize);
 }
 
-.glassBackground {
+/* For desktop submenus */
+.detailsWrapper {
+  font-size: var(--navItemFontSize);
+}
+
+.detailsWrapper summary {
+  padding-block: var(--blockPadding);
+  list-style: none;
+}
+
+.detailsWrapper details {
+  position: relative;
+}
+
+.detailsWrapper ul {
+  transition: var(--backgroundTransistion);
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(0px);
+  margin-block-start: calc(var(--bottomExtraMargin) + 1px);
+  padding-inline-start: 0;
+  position: absolute;
+  width: max-content;
+}
+
+.detailsWrapper li {
+  padding: 5px 15px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.detailsWrapper li:hover {
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(20px);
 }
 
-.whiteBackground {
-  background-color: rgba(255, 255, 255);
+.glassBackground {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+}
+
+.glassBackground ul {
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(70px);
 }
 
 .leftNav {
@@ -73,6 +120,8 @@
 }
 
 .fullScreenMenu {
+  text-transform: uppercase;
+  user-select: none;
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(20px);
   position: fixed;
@@ -90,7 +139,19 @@
   cursor: pointer;
 }
 
-.fullScreenTitle:hover {
+.fullScreenSubTitle {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+}
+
+.fullScreenTitle,
+.fullScreenSubTitle {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.788);
+}
+
+.fullScreenTitle:hover,
+.fullScreenSubTitle:hover {
   color: black;
 }
 
@@ -104,42 +165,6 @@
 .svgMobile {
   position: absolute;
   right: -30px;
-}
-
-.menuOpen {
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-}
-
-.submenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-  z-index: 1001;
-  min-width: 130px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
-}
-
-.submenuItem {
-  text-align: center;
-  letter-spacing: 0.1rem;
-  margin: 0;
-  padding: 0.9rem 1rem;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-.navItem.open .submenu {
-  opacity: 1;
-  visibility: visible;
-}
-
-.submenuItem:hover {
-  background-color: #f0f0f0;
 }
 
 .fullScreenSubmenu {

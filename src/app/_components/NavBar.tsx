@@ -1,9 +1,8 @@
 "use client"
 import { usePathname } from "next/navigation"
-import React, { useEffect, useRef, useState } from "react"
+import React, { use, useEffect, useRef, useState } from "react"
 import styles from "./NavBar.module.css"
 import { TransitionLink } from "./utils/TransitionLink"
-import { DownArrowSVG, UpArrowSVG } from "./UI/svg"
 
 interface NavItem {
   title: string
@@ -16,11 +15,9 @@ function NavBar() {
   const pathname = usePathname()
   const navBar = useRef<HTMLDivElement>(null)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
-  const submenuRefs = useRef<{ [key: string]: React.RefObject<HTMLDivElement> }>({})
-  const navItemRefs = useRef<{ [key: string]: React.RefObject<HTMLDivElement> }>({})
-  const closingSubmenu = useRef(false) // Track if we're in the process of closing a submenu
+  const [heroIntersecting, setHeroIntersecting] = useState(true)
 
+  // Observe the hero element to determine if it's visible (we determine the navbar background on this)
   useEffect(() => {
     const setupObserver = () => {
       const target = document.querySelector("#hero")
@@ -29,21 +26,13 @@ function NavBar() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) {
-            navBar.current?.classList.add(styles.glassBackground)
-            if (openSubmenu && submenuRefs.current[openSubmenu].current) {
-              submenuRefs.current[openSubmenu].current?.classList.add(styles.whiteBackground)
-            }
+            setHeroIntersecting(false)
           } else {
-            navBar.current?.classList.remove(styles.glassBackground)
-            if (openSubmenu && submenuRefs.current[openSubmenu].current) {
-              submenuRefs.current[openSubmenu].current?.classList.remove(styles.whiteBackground)
-            }
+            setHeroIntersecting(true)
           }
         })
       })
-
       observer.observe(target)
-
       return () => {
         observer.disconnect()
       }
@@ -56,30 +45,12 @@ function NavBar() {
     }
   }, [pathname])
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (openSubmenu) {
-        const submenuRef = submenuRefs.current[openSubmenu]
-        if (submenuRef.current && !submenuRef.current.contains(event.target as Node)) {
-          closingSubmenu.current = true
-          setOpenSubmenu(null)
-          setTimeout(() => (closingSubmenu.current = false), 200) // Short delay to prevent immediate reopening
-        }
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [openSubmenu])
-
   const NavBarItems: NavItem[] = [
     { title: "Home", href: "/" },
     { title: "About", href: "/#about" },
     {
       title: "Portfolio",
-      href: "#",
+      href: "/portfolio",
       hasSubmenu: true,
       subMenuItems: [
         { title: "Travel", href: "/portfolio/travel" },
@@ -90,56 +61,42 @@ function NavBar() {
     { title: "Contact", href: "/#contact" },
   ]
 
+  useEffect(() => {
+    window.addEventListener("click", closeNavItemSubMenu)
+    return () => {
+      window.removeEventListener("click", closeNavItemSubMenu)
+    }
+  }, [])
+
   function toggleMenu() {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
-  function toggleNavItemSubMenu(title: string, e: React.MouseEvent) {
-    e.preventDefault()
-    e.stopPropagation()
-    if (closingSubmenu.current) return // Prevent reopening if we're in the process of closing
-    setOpenSubmenu((prevOpen) => (prevOpen === title ? null : title))
-  }
-
-  function closeNavItemSubMenu(e: React.MouseEvent) {
-    setOpenSubmenu(null)
+  // Close the submenu when clicking outside of it
+  function closeNavItemSubMenu() {
+    console.log("closeNavItemSubMenu")
+    const details = document.querySelectorAll("details")
+    if (details) {
+      details.forEach((f) => f.removeAttribute("open"))
+    }
   }
 
   const navItemRender = (item: NavItem) => {
-    if (!submenuRefs.current[item.title]) {
-      submenuRefs.current[item.title] = React.createRef()
-      navItemRefs.current[item.title] = React.createRef()
-    }
-
     return (
-      <div
-        key={item.title}
-        className={`${styles.navItem} ${openSubmenu === item.title ? styles.open : ""}`}
-      >
+      <div key={item.title} className={`${styles.navItem}`}>
         {item.hasSubmenu ? (
-          <>
-            <p className={styles.navItemTitle} onClick={(e) => toggleNavItemSubMenu(item.title, e)}>
-              {item.title}
-            </p>
-            {openSubmenu === item.title ? (
-              <DownArrowSVG className={styles.svg} width="12px" height="12px" fill="#000000" />
-            ) : (
-              <UpArrowSVG className={styles.svg} width="12px" height="12px" fill="#000000" />
-            )}
-            {openSubmenu === item.title && (
-              <div ref={submenuRefs.current[item.title]} className={styles.submenu}>
-                {item.subMenuItems?.map((subItem) => (
-                  <TransitionLink
-                    key={subItem.title}
-                    href={subItem.href}
-                    extraOnClick={closeNavItemSubMenu}
-                  >
-                    <p className={styles.submenuItem}>{subItem.title}</p>
+          <details className={styles.detailsWrapper}>
+            <summary>{item.title}</summary>
+            <ul className={heroIntersecting ? "" : styles.glassBackground}>
+              {item.subMenuItems?.map((subItem) => (
+                <li key={subItem.title}>
+                  <TransitionLink href={subItem.href} extraOnClick={closeNavItemSubMenu}>
+                    {subItem.title}
                   </TransitionLink>
-                ))}
-              </div>
-            )}
-          </>
+                </li>
+              ))}
+            </ul>
+          </details>
         ) : (
           <TransitionLink href={item.href}>
             <p className={styles.navItemTitle}>{item.title}</p>
@@ -153,37 +110,16 @@ function NavBar() {
     return (
       <>
         {item.hasSubmenu ? (
-          <div className={styles.fullScreenNavItem}>
-            <p
-              className={styles.fullScreenTitle}
-              onClick={(e) => toggleNavItemSubMenu(item.title, e)}
-            >
-              {item.title}
-            </p>
-            {openSubmenu === item.title ? (
-              <DownArrowSVG
-                className={styles.svgMobile}
-                width="18px"
-                height="18px"
-                fill="#000000"
-              />
-            ) : (
-              <UpArrowSVG className={styles.svgMobile} width="18px" height="18px" fill="#000000" />
-            )}
-            {openSubmenu === item.title && (
-              <div ref={submenuRefs.current[item.title]} className={styles.submenuFullScreen}>
-                {item.subMenuItems?.map((subItem) => (
-                  <TransitionLink
-                    key={subItem.title}
-                    href={subItem.href}
-                    extraOnClick={closeNavItemSubMenu}
-                  >
-                    <p className={styles.submenuItem}>{subItem.title}</p>
-                  </TransitionLink>
-                ))}
-              </div>
-            )}
-          </div>
+          <>
+            <TransitionLink key={item.title} href={item.href} extraOnClick={toggleMenu}>
+              <p className={styles.fullScreenTitle}>{item.title}</p>
+            </TransitionLink>
+            {item.subMenuItems?.map((subItem) => (
+              <TransitionLink key={subItem.title} href={subItem.href} extraOnClick={toggleMenu}>
+                <p className={styles.fullScreenSubTitle}>{subItem.title}</p>
+              </TransitionLink>
+            ))}
+          </>
         ) : (
           <TransitionLink key={item.title} href={item.href} extraOnClick={toggleMenu}>
             <p className={styles.fullScreenTitle}>{item.title}</p>
@@ -194,7 +130,12 @@ function NavBar() {
   }
   return (
     <>
-      <nav ref={navBar} className={`${styles.navbar} ${isMobileMenuOpen ? styles.menuOpen : ""}`}>
+      <nav
+        ref={navBar}
+        className={`${styles.navbar} ${isMobileMenuOpen ? styles.menuOpen : ""} ${
+          !heroIntersecting ? styles.glassBackground : ""
+        }`}
+      >
         <div className={styles.leftNav}>
           <div className={styles.logoContainer}>
             <input

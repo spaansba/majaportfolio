@@ -89,11 +89,13 @@ function NavBar() {
             <summary>{item.title}</summary>
             <ul className={heroIntersecting ? "" : styles.glassBackground}>
               {item.subMenuItems?.map((subItem) => (
-                <li key={subItem.title}>
-                  <TransitionLink href={subItem.href} extraOnClick={closeNavItemSubMenu}>
-                    {subItem.title}
-                  </TransitionLink>
-                </li>
+                <TransitionLink
+                  key={subItem.title}
+                  href={subItem.href}
+                  extraOnClick={closeNavItemSubMenu}
+                >
+                  <li>{subItem.title}</li>
+                </TransitionLink>
               ))}
             </ul>
           </details>

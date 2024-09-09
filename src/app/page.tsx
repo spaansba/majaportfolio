@@ -4,7 +4,6 @@ import AboutSection from "./_components/AboutSection"
 import PortfolioSection from "./_components/PortfolioSection"
 
 import ZoomParallax from "./_components/UI/ZoomParallax"
-import ScrollMouseOverlay from "./_components/utils/ScrollMouseOverlay"
 
 export default function Home() {
   return (

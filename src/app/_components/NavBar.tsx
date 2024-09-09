@@ -16,6 +16,7 @@ function NavBar() {
   const navBar = useRef<HTMLDivElement>(null)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [heroIntersecting, setHeroIntersecting] = useState(true)
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false)
 
   // Observe the hero element to determine if it's visible (we determine the navbar background on this)
   useEffect(() => {
@@ -81,19 +82,21 @@ function NavBar() {
     }
   }
 
-  function openNavSubItemMenu() {
-    if (navBar.current) {
-      navBar.current.dataset.hasOpenSubMenu = "true"
-    }
+  const handleDetailsToggle = (event: React.ToggleEvent<HTMLDetailsElement>) => {
+    setIsDetailsOpen(event.currentTarget.open)
   }
 
   const navItemRender = (item: NavItem) => {
     return (
       <div key={item.title} className={`${styles.navItem}`}>
         {item.hasSubmenu ? (
-          <details className={styles.detailsWrapper}>
+          <details className={styles.detailsWrapper} onToggle={handleDetailsToggle}>
             <summary>{item.title}</summary>
-            <ul className={heroIntersecting ? "" : styles.glassBackground}>
+            <ul
+              className={`${heroIntersecting ? "" : styles.glassBackground} ${
+                isDetailsOpen ? styles.detailsOpen : ""
+              }`}
+            >
               {item.subMenuItems?.map((subItem) => (
                 <TransitionLink
                   key={subItem.title}
@@ -139,10 +142,9 @@ function NavBar() {
   return (
     <>
       <nav
-        ref={navBar}
         className={`${styles.navbar} ${isMobileMenuOpen ? styles.menuOpen : ""} ${
           !heroIntersecting ? styles.glassBackground : ""
-        }`}
+        } ${isDetailsOpen ? styles.detailsOpen : ""}`}
       >
         <div className={styles.leftNav}>
           <div className={styles.logoContainer}>

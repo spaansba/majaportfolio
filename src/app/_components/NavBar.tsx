@@ -81,6 +81,12 @@ function NavBar() {
     }
   }
 
+  function openNavSubItemMenu() {
+    if (navBar.current) {
+      navBar.current.dataset.hasOpenSubMenu = "true"
+    }
+  }
+
   const navItemRender = (item: NavItem) => {
     return (
       <div key={item.title} className={`${styles.navItem}`}>

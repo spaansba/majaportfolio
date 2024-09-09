@@ -39,8 +39,12 @@
   justify-content: center;
 }
 
-.container .sticky .el:nth-of-type(1) {
-  z-index: 100;
+.imageContainerMain {
+  z-index: 120;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container .sticky .el .imageContainer {
@@ -96,57 +100,87 @@
   height: 30vh;
 }
 
-.gridContainer {
-  background-color: white;
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-areas:
-    "topLeft topMidLeft topMidRight topRight"
-    "midLeft center center midRight"
-    "bottomLeft bottomMidLeft bottomMidRight bottomRight";
-  gap: 10px;
+.hero {
+  z-index: 101000;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  overflow: hidden;
+  height: 100vh; /* Set the height to full viewport height */
 }
-
-.topLeft {
-  grid-area: topLeft;
-}
-.topMidLeft {
-  grid-area: topMidLeft;
-}
-.topMidRight {
-  grid-area: topMidRight;
-}
-.topRight {
-  grid-area: topRight;
-}
-.midLeft {
-  grid-area: midLeft;
-}
-.center {
-  grid-area: center;
-  z-index: 100;
-}
-.midRight {
-  grid-area: midRight;
-}
-.bottomLeft {
-  grid-area: bottomLeft;
-}
-.bottomMidLeft {
-  grid-area: bottomMidLeft;
-}
-.bottomMidRight {
-  grid-area: bottomMidRight;
-}
-.bottomRight {
-  grid-area: bottomRight;
-}
-
-.gridItem {
-  position: relative;
+.heroContent {
+  z-index: 101000;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  color: white;
+  z-index: 101;
   width: 100%;
-  height: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.heroContent h1 {
+  white-space: nowrap;
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.heroContent h2 {
+  white-space: nowrap;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.button {
+  z-index: 101000;
+  display: inline-block;
+  color: #000;
+  padding: 0.8rem 1.6rem;
+  background-color: white;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: transform 0.6s ease;
+}
+
+.mouseContainer {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(30px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  z-index: 10000000000;
+  pointer-events: none;
+}
+
+.mouseContainer span {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .heroContent h1 {
+    font-size: 2.5rem;
+  }
+
+  .heroContent h2 {
+    font-size: 1.2rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+  }
 }

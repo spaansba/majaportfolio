@@ -23,40 +23,47 @@ export default function PortfolioAlbum({ hero, images, title }: PortfolioAlbumPr
   }, [])
 
   return (
-    <div className={styles.contentHolder}>
+    <>
       <ImageModal image={image} onClose={closeModal} />
-
-      <div id="hero" ref={heroRef} className={styles.hero}>
-        <motion.div
-          className={styles.heroContent}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          style={{ y }}
-        >
-          <h1>{title}</h1>
-          <ScrollToAfterHero heroRef={heroRef} />
-        </motion.div>
-        <Image
-          src={hero.scr}
-          alt={hero.alt}
-          layout="fill"
-          objectFit="cover"
-          priority
-          draggable={false}
-        />
-      </div>
-      <div className={styles.photoGrid}>
-        {images.map((img, index) => (
-          <div
-            onClick={() => setImage(img)}
-            key={index}
-            className={`${styles.imageWrapper} ${styles[img.size]}`}
+      <div className={styles.contentHolder}>
+        <div id="hero" ref={heroRef} className={styles.hero}>
+          <motion.div
+            className={styles.heroContent}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            style={{ y }}
           >
-            <Image src={img.src} alt={img.alt} layout="fill" objectFit="cover" draggable={false} />
-          </div>
-        ))}
+            <h1>{title}</h1>
+            <ScrollToAfterHero heroRef={heroRef} />
+          </motion.div>
+          <Image
+            src={hero.scr}
+            alt={hero.alt}
+            layout="fill"
+            objectFit="cover"
+            priority
+            draggable={false}
+          />
+        </div>
+        <div className={styles.photoGrid}>
+          {images.map((img, index) => (
+            <div
+              onClick={() => setImage(img)}
+              key={index}
+              className={`${styles.imageWrapper} ${styles[img.size]}`}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                layout="fill"
+                objectFit="cover"
+                draggable={false}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   )
 }

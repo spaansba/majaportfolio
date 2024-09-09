@@ -34,6 +34,7 @@
 }
 
 .hero {
+  z-index: 101;
   position: relative;
   height: 115vh;
   display: flex;
@@ -44,10 +45,10 @@
 }
 
 .heroContent {
+  z-index: 101;
   position: relative;
   text-align: center;
   color: white;
-  z-index: 2;
   margin-top: -15vh;
 }
 

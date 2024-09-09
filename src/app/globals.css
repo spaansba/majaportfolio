@@ -10,7 +10,6 @@ body {
 }
 
 body {
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: var(--font-raleway);
@@ -27,7 +26,8 @@ h2 {
 
 html,
 body {
-  overflow-x: hidden;
+  background-color: rgb(204, 197, 197);
+  box-sizing: border-box;
   letter-spacing: 0.1rem;
   scroll-behavior: smooth;
 }

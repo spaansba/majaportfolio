@@ -1,0 +1,152 @@
+.container {
+  height: 300vh;
+  position: relative;
+}
+
+.imageNumber {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: rgb(255, 0, 0);
+  font-size: 2rem;
+  z-index: 1000000;
+}
+
+.container .sticky {
+  align-self: normal;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+}
+
+.container .sticky .el {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .sticky .el:nth-of-type(1) {
+  z-index: 100;
+}
+
+.container .sticky .el .imageContainer {
+  position: relative;
+  width: 25vw;
+  height: 25vh;
+  border: 1px solid rgba(165, 162, 162, 0.26);
+}
+
+.container .sticky .el .imageContainer img {
+  object-fit: cover;
+}
+
+.container .sticky .el:nth-of-type(2) .imageContainer {
+  top: -30vh;
+  left: 20vw;
+  width: 35vw;
+  height: 30vh;
+}
+
+.container .sticky .el:nth-of-type(3) .imageContainer {
+  top: 0vh;
+  left: -31vw;
+  width: 32.5vw;
+  height: 20vh;
+}
+
+.container .sticky .el:nth-of-type(4) .imageContainer {
+  top: 0vh;
+  left: 31vw;
+  width: 32.5vw;
+  height: 20vh;
+}
+
+.container .sticky .el:nth-of-type(5) .imageContainer {
+  top: 30vh;
+  left: -20vw;
+  width: 35vw;
+  height: 30vh;
+}
+
+.container .sticky .el:nth-of-type(6) .imageContainer {
+  top: -30vh;
+  left: -22.5vw;
+  width: 45vw;
+  height: 30vh;
+}
+
+.container .sticky .el:nth-of-type(7) .imageContainer {
+  top: 30vh;
+  left: 22.5vw;
+  width: 45vw;
+  height: 30vh;
+}
+
+.gridContainer {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "topLeft topMidLeft topMidRight topRight"
+    "midLeft center center midRight"
+    "bottomLeft bottomMidLeft bottomMidRight bottomRight";
+  gap: 10px;
+}
+
+.topLeft {
+  grid-area: topLeft;
+}
+.topMidLeft {
+  grid-area: topMidLeft;
+}
+.topMidRight {
+  grid-area: topMidRight;
+}
+.topRight {
+  grid-area: topRight;
+}
+.midLeft {
+  grid-area: midLeft;
+}
+.center {
+  grid-area: center;
+  z-index: 100;
+}
+.midRight {
+  grid-area: midRight;
+}
+.bottomLeft {
+  grid-area: bottomLeft;
+}
+.bottomMidLeft {
+  grid-area: bottomMidLeft;
+}
+.bottomMidRight {
+  grid-area: bottomMidRight;
+}
+.bottomRight {
+  grid-area: bottomRight;
+}
+
+.gridItem {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

@@ -4,11 +4,13 @@ import AboutSection from "./_components/AboutSection"
 import PortfolioSection from "./_components/PortfolioSection"
 import ContactSection from "./_components/ContactSection"
 import Image from "next/image"
+import ZoomParallax from "./_components/UI/ZoomParallax"
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <HeroSection>
+      <ZoomParallax />
+      {/* <HeroSection>
         <Image
           draggable={false}
           src="https://utfs.io/f/2ae7657d-6ba6-4f10-8d13-023d209ad084-thqkup.jpg"
@@ -17,11 +19,11 @@ export default function Home() {
           objectFit="cover"
           priority
         />
-      </HeroSection>
+      </HeroSection> */}
       <AboutSection />
       <PortfolioSection />
 
-      <ContactSection />
+      {/* <ContactSection /> */}
     </main>
   )
 }

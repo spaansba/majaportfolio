@@ -171,16 +171,60 @@
   color: white;
 }
 
-@media (max-width: 768px) {
+@media (pointer: coarse) {
+  .mouseContainer {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroContent h1 {
+    font-size: 1.8rem;
+  }
+  .heroContent h2 {
+    font-size: 0.8rem;
+  }
+  .button {
+    font-size: 0.5rem;
+  }
+}
+
+@media (max-width: 1000px) {
   .heroContent h1 {
     font-size: 2.5rem;
   }
-
   .heroContent h2 {
     font-size: 1.2rem;
   }
-
   .button {
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContent h1 {
+    font-size: 1.4rem;
+  }
+
+  .heroContent h2 {
+    font-size: 0.6rem;
+  }
+
+  .button {
+    font-size: 0.4rem;
+  }
+}
+
+@media (max-width: 600) {
+  .heroContent h1 {
+    font-size: 1.2rem;
+  }
+
+  .heroContent h2 {
+    font-size: 0.5rem;
+  }
+
+  .button {
+    font-size: 0.3rem;
   }
 }

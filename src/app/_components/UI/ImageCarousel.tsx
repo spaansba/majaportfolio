@@ -37,7 +37,7 @@ export default function ImageCarousel() {
         slidesPerView: 1,
         spaceBetween: 0,
         autoplay: {
-          delay: 2500,
+          delay: 100000000000,
         },
 
         breakpoints: {

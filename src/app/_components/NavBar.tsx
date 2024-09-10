@@ -92,11 +92,7 @@ function NavBar() {
         {item.hasSubmenu ? (
           <details className={styles.detailsWrapper} onToggle={handleDetailsToggle}>
             <summary>{item.title}</summary>
-            <ul
-              className={`${heroIntersecting ? "" : styles.glassBackground} ${
-                isDetailsOpen ? styles.detailsOpen : ""
-              }`}
-            >
+            <ul className={`${heroIntersecting || isDetailsOpen ? "" : styles.glassBackground}`}>
               {item.subMenuItems?.map((subItem) => (
                 <TransitionLink
                   key={subItem.title}
@@ -142,9 +138,8 @@ function NavBar() {
   return (
     <>
       <nav
-        className={`${styles.navbar} ${isMobileMenuOpen ? styles.menuOpen : ""} ${
-          !heroIntersecting ? styles.glassBackground : ""
-        } ${isDetailsOpen ? styles.detailsOpen : ""}`}
+        className={`${styles.navbar} ${isMobileMenuOpen ? styles.menuOpen : ""} 
+        ${!heroIntersecting || isDetailsOpen ? styles.glassBackground : ""}`}
       >
         <div className={styles.leftNav}>
           <div className={styles.logoContainer}>

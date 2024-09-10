@@ -1,8 +1,9 @@
 "use client"
 import styles from "./ZoomParallax.module.css"
 import Image from "next/image"
-import { useScroll, useTransform, motion, useSpring, useMotionValue } from "framer-motion"
+import { useScroll, useTransform, motion, useSpring, useMotionValue, stagger } from "framer-motion"
 import { useEffect, useRef, useState } from "react"
+import { openAsBlob } from "fs"
 
 export default function Index() {
   const smoothnessOptions = { damping: 20, stiffness: 300, mass: 0.7 }
@@ -43,33 +44,53 @@ export default function Index() {
       id: 2,
       src: "/portraits/072224_15_bw.jpg",
       scale: scale6,
+      startupScale: 6,
     },
     {
       id: 3,
       src: "/portraits/457A0100_SEB_color.jpg",
       scale: scale5,
+      startupScale: 5,
     },
     {
       id: 4,
       src: "/061624_77.jpg",
       scale: scale5,
+      startupScale: 3,
     },
     {
       id: 5,
       src: "/080424_99.jpg",
       scale: scale6,
+      startupScale: 4,
     },
     {
       id: 6,
       src: "https://utfs.io/f/07d3c5dd-9c3a-4ca9-9e91-7c53327fc0ed-etcaly.jpg",
       scale: scale8,
+      startupScale: 3,
     },
     {
       id: 7,
       src: "/portraits/062624_32.jpg",
       scale: scale8,
+      startupScale: 5,
     },
   ]
+
+  const enterTransition = {
+    scale: {
+      type: "spring",
+      damping: 17,
+      stiffness: 100,
+      mass: 1,
+      restDelta: 0.001,
+    },
+    opacity: {
+      ease: "easeOut",
+      duration: 1,
+    },
+  }
 
   return (
     <div id="hero" ref={container} className={styles.container}>
@@ -84,7 +105,13 @@ export default function Index() {
         <span>Scroll</span>
       </motion.div>
       <div className={styles.sticky}>
-        <motion.div key={1} style={{ scale: mainPicScale }} className={styles.el}>
+        <motion.div
+          style={{ scale: mainPicScale }}
+          initial={{ scale: `scale(${4})`, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={enterTransition}
+          className={styles.el}
+        >
           <div className={`${styles.imageContainer} ${styles.imageContainerMain}`}>
             <motion.div
               className={styles.heroContent}
@@ -112,11 +139,18 @@ export default function Index() {
             />
           </div>
         </motion.div>
-        {pictures.map(({ src, scale, id }) => (
-          <motion.div key={id} style={{ scale }} className={styles.el}>
-            <div className={styles.imageContainer}>
+        {pictures.map(({ src, scale, id, startupScale }) => (
+          <motion.div
+            key={id}
+            style={{ scale }}
+            initial={{ scale: `scale(${startupScale})`, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={enterTransition}
+            className={styles.el}
+          >
+            <motion.div className={styles.imageContainer}>
               <Image src={src} fill alt="image" />
-            </div>
+            </motion.div>
           </motion.div>
         ))}
       </div>

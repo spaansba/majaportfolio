@@ -19,14 +19,9 @@
   user-select: none;
 }
 
-.detailsOpen {
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(20px);
-}
-
 .glassBackground {
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(40px);
 }
 
 .logoContainer {

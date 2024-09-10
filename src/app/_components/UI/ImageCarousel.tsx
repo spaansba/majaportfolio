@@ -7,6 +7,7 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 import "swiper/css/scrollbar"
 import Image from "next/image"
+import { motion } from "framer-motion"
 export default function ImageCarousel() {
   const swiperRef = useRef(null)
 
@@ -77,7 +78,14 @@ export default function ImageCarousel() {
   ]
 
   return (
-    <div className="swiper" ref={swiperRef}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="swiper"
+      ref={swiperRef}
+      viewport={{ once: true }}
+    >
       <div className="swiper-wrapper">
         {images.map((image) => (
           <div key={image.id} className="swiper-slide">
@@ -100,6 +108,6 @@ export default function ImageCarousel() {
           color: white !important;
         }
       `}</style>
-    </div>
+    </motion.div>
   )
 }

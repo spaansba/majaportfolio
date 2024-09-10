@@ -107,7 +107,7 @@ export default function Index() {
       <div className={styles.sticky}>
         <motion.div
           style={{ scale: mainPicScale }}
-          initial={{ scale: 4, opacity: 0 }}
+          initial={{ scale: 2, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={enterTransition}
           className={styles.el}

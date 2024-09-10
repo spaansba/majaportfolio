@@ -2,7 +2,7 @@
   --backgroundTransistion: background-color 0.7s ease, backdrop-filter 0.7s ease;
   --navItemFontSize: 0.8rem;
   --blockPadding: 1.1rem 0.2rem;
-  --bottomExtraMargin: 0.4rem;
+  --bottomExtraMargin: 0.8rem;
   transition: var(--backgroundTransistion);
   text-transform: uppercase;
   letter-spacing: 0.2rem;

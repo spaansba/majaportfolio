@@ -42,7 +42,7 @@ export default function Index() {
   const pictures = [
     {
       id: 2,
-      src: "/portraits/072224_15_bw.jpg",
+      src: "/080424_99.jpg",
       scale: scale6,
       startupScale: 6,
     },
@@ -60,13 +60,13 @@ export default function Index() {
     },
     {
       id: 5,
-      src: "/080424_99.jpg",
+      src: "https://utfs.io/f/07d3c5dd-9c3a-4ca9-9e91-7c53327fc0ed-etcaly.jpg",
       scale: scale6,
       startupScale: 4,
     },
     {
       id: 6,
-      src: "https://utfs.io/f/07d3c5dd-9c3a-4ca9-9e91-7c53327fc0ed-etcaly.jpg",
+      src: "/portraits/072224_15_bw.jpg",
       scale: scale8,
       startupScale: 3,
     },
@@ -107,7 +107,7 @@ export default function Index() {
       <div className={styles.sticky}>
         <motion.div
           style={{ scale: mainPicScale }}
-          initial={{ scale: `scale(${4})`, opacity: 0 }}
+          initial={{ scale: 4, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={enterTransition}
           className={styles.el}

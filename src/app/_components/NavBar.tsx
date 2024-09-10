@@ -75,7 +75,6 @@ function NavBar() {
 
   // Close the submenu when clicking outside of it
   function closeNavItemSubMenu() {
-    console.log("closeNavItemSubMenu")
     const details = document.querySelectorAll("details")
     if (details) {
       details.forEach((f) => f.removeAttribute("open"))

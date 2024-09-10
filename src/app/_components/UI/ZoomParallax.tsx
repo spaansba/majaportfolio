@@ -3,7 +3,6 @@ import styles from "./ZoomParallax.module.css"
 import Image from "next/image"
 import { useScroll, useTransform, motion, useSpring, useMotionValue, stagger } from "framer-motion"
 import { useEffect, useRef, useState } from "react"
-import { openAsBlob } from "fs"
 
 export default function Index() {
   const smoothnessOptions = { damping: 20, stiffness: 300, mass: 0.7 }
@@ -39,42 +38,67 @@ export default function Index() {
   const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6])
   const scale8 = useTransform(scrollYProgress, [0, 1], [1, 7])
 
+  //These are close to useless, but I'm just testing stuff
+  const moveXRight = useTransform(scrollYProgress, [0, 1], [0, 70])
+  const moveXLeft = useTransform(scrollYProgress, [0, 1], [0, -70])
+  const moveYUp = useTransform(scrollYProgress, [0, 1], [0, -25])
+  const moveYDown = useTransform(scrollYProgress, [0, 1], [0, 25])
+  const moveNone = useTransform(scrollYProgress, [0, 1], [0, 0])
+
   const pictures = [
     {
       id: 2,
+      position: "topRight",
       src: "/080424_99.jpg",
       scale: scale6,
       startupScale: 6,
+      moveX: moveXRight,
+      moveY: moveYUp,
     },
     {
       id: 3,
+      position: "midLeft",
       src: "/portraits/457A0100_SEB_color.jpg",
       scale: scale5,
       startupScale: 5,
+      moveX: moveXLeft,
+      moveY: moveYDown,
     },
     {
       id: 4,
+      position: "midRight",
       src: "/061624_77.jpg",
       scale: scale5,
       startupScale: 3,
+      moveX: moveXRight,
+      moveY: moveYUp,
     },
     {
       id: 5,
+      position: "bottomLeft",
       src: "https://utfs.io/f/07d3c5dd-9c3a-4ca9-9e91-7c53327fc0ed-etcaly.jpg",
       scale: scale6,
       startupScale: 4,
+      moveX: moveXLeft,
+      moveY: moveYDown,
     },
     {
       id: 6,
+      position: "topLeft",
       src: "/portraits/072224_15_bw.jpg",
       scale: scale8,
       startupScale: 3,
+      moveX: moveXLeft,
+      moveY: moveYUp,
     },
     {
       id: 7,
+      position: "bottomRight",
       src: "/portraits/062624_32.jpg",
       scale: scale8,
       startupScale: 5,
+      moveX: moveXRight,
+      moveY: moveYDown,
     },
   ]
 
@@ -139,10 +163,10 @@ export default function Index() {
             />
           </div>
         </motion.div>
-        {pictures.map(({ src, scale, id, startupScale }) => (
+        {pictures.map(({ src, scale, id, startupScale, moveX, moveY }) => (
           <motion.div
             key={id}
-            style={{ scale }}
+            style={{ scale: scale, y: moveY, x: moveX }}
             initial={{ scale: `scale(${startupScale})`, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={enterTransition}
